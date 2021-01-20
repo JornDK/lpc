@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="inherit_report_mrporder" 
+      inherit_id="mrp.report_mrporder">
+        <xpath expr="//div/div[4]/div[1]" position="after">
+              <div class="col-3">
+                  <strong>Height (Mt.):</strong><br/>
+                  <span t-field="o.height"/>
+              </div>
+              <div class="col-3">
+                  <strong>width (Mt.):</strong><br/>
+                  <span t-field="o.width"/>
+              </div>
+              <div class="col-3">
+                  <strong>(Mt.)2:</strong><br/>
+                  <span t-field="o.square_meter"/>
+              </div>        
+        </xpath>
+  	</template>
+</odoo>

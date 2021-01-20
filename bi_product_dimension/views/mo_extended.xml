@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data>
+
+		<record id="purchase_order_extend_form" model="ir.ui.view">
+			<field name="name">purchase.order.form.extended</field>
+			<field name="model">purchase.order</field>
+			<field name="inherit_id" ref="purchase.purchase_order_form" />
+			<field name="arch" type="xml">
+				<field name='date_order' position="after">
+					<field name="hide_net_price" invisible="1"/>
+				</field>
+				<xpath expr="//field[@name='order_line']//tree//field[@name='name']"
+					position="after">
+					<field name="width" />
+					<field name="height" />
+					<field name="square_meter" />
+					<field name="hide_net_price" invisible="1"/>
+				</xpath>
+				<xpath expr="//field[@name='order_line']//tree//field[@name='price_unit']" position="after">
+					<field name="net_price_pur" attrs="{'column_invisible': [('parent.hide_net_price', '=', True)], 'invisible': [('hide_net_price','=',True)]}"/>
+				</xpath>
+				<field name='company_id' position="after">
+					<field name="dispatch_type" />
+				</field>
+			</field>
+		</record>
+
+
+		<record id="mrp_extended_form" model="ir.ui.view">
+			<field name="name">mrp.production.extend.form</field>
+			<field name="model">mrp.production</field>
+			<field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='company_id']" position="before">
+					<field name="width" />
+					<field name="height" />
+					<field name="square_meter" />
+				</xpath>
+			</field>
+		</record>
+
+
+		<record id="procurement_extended_form" model="ir.ui.view">
+			<field name="name">procurement.order.extend.form</field>
+			<field name="model">stock.rule</field>
+			<field name="inherit_id" ref="stock.view_stock_rule_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='name']" position="after">
+					<field name="width" />
+					<field name="height" />
+				</xpath>
+			</field>
+		</record>
+
+	</data>
+</odoo>
