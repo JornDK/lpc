@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="report_invoice_report_inherit_umlilo_module_bi" 
+		inherit_id="account.report_invoice_document">
+		<xpath expr="//table[@name='invoice_line_table']/thead/tr/th[2]" position="after">
+			<th>Height (Mt.)</th>
+			<th>width (Mt.)</th>
+			<th>(Mt.)2</th>
+		</xpath>
+		<xpath expr="//table[@name='invoice_line_table']/tbody/t/tr/t/td[1]" position="after">
+			<td><span t-field="line.height"/></td>
+			<td><span t-field="line.width"/></td>
+			<td><span t-field="line.m2"/></td>
+		</xpath>
+		<xpath expr="//table[@name='invoice_line_table']/thead/tr/th[7]" position="after">
+			<t t-if="o.hide_net_price == False">
+				<th>Net Price</th>
+			</t>
+		</xpath>
+		<xpath expr="//table[@name='invoice_line_table']/tbody/t/tr/t/td[7]" position="after">
+			<t t-if="o.hide_net_price == False">
+				<td><span t-field="line.net_price"/></td>
+			</t>
+		</xpath>
+	</template>
+</odoo>

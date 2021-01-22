@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="report_saleorder_document_inherit_umlilo_module_bi" inherit_id="sale.report_saleorder_document">
+		<xpath expr="//table[hasclass('o_main_table')]/thead/tr/th[1]" position="after">
+			<th>Height (Mt.)</th>
+			<th>width (Mt.)</th>
+			<th>(Mt.)2</th>
+		</xpath>
+		<xpath expr="//table[hasclass('o_main_table')]/tbody/t/tr[1]/t/td[1]" position="after">
+			<td><span t-field="line.height"/></td>
+			<td><span t-field="line.width"/></td>
+			<td><span t-field="line.m2"/></td>
+		</xpath>
+		<xpath expr="//table[hasclass('o_main_table')]/thead/tr/th[6]" position="after">
+			<t t-if="doc.hide_net_price == False">
+				<th>Net Price</th>
+			</t>
+		</xpath>
+		<xpath expr="//table[hasclass('o_main_table')]/tbody/t/tr[1]/t/td[6]" position="after">
+			<t t-if="doc.hide_net_price == False">
+				<td><span t-field="line.net_price"/></td>
+			</t>
+		</xpath>
+	</template>
+</odoo>
